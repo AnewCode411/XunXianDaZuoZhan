@@ -5,13 +5,13 @@ import { DateUtil } from "../util/DateUtil";
 @regClass()
 export class XLog extends ScriptSingleton<XLog>() {
     private m_logLevel: boolean[] = [ false, false, false, false, false, false, false ];
-    private ALL: number = 0; //所有
-    private DEBUG: number = 1; //调试
-    private INFO: number = 2; //一般信息
-    private PROTO: number = 3; //协议
-    private WARN: number = 4; //警告
-    private ERROR: number = 5; //错误
-    private VITAL: number = 6; //重要流程
+    static ALL: number = 0; //所有
+    static DEBUG: number = 1; //调试
+    static INFO: number = 2; //一般信息
+    static PROTO: number = 3; //协议
+    static WARN: number = 4; //警告
+    static ERROR: number = 5; //错误
+    static VITAL: number = 6; //重要流程
 
     init() {
         this.initLogFile();
@@ -23,7 +23,7 @@ export class XLog extends ScriptSingleton<XLog>() {
 
     canLog(level: number)
     {
-        if (this.m_logLevel[this.ALL] || this.m_logLevel[level]) return true;
+        if (this.m_logLevel[XLog.ALL] || this.m_logLevel[level]) return true;
         else return false;
     }
 
@@ -43,37 +43,37 @@ export class XLog extends ScriptSingleton<XLog>() {
 
     debug(log: string)
     {
-        if (!this.canLog(this.DEBUG)) return;
+        if (!this.canLog(XLog.DEBUG)) return;
         console.log(this.getCurTime() + "[DEBUG]\t" + log);
     }
 
     vital(log: string)
     {
-        if (!this.canLog(this.VITAL)) return;
+        if (!this.canLog(XLog.VITAL)) return;
         console.log(this.getCurTime() + "[VITAL]\t" + log);
     }
 
     info(log: string)
     {
-        if (!this.canLog(this.INFO)) return;
+        if (!this.canLog(XLog.INFO)) return;
         console.log(this.getCurTime() + "[INFO]\t" + log);
     }
 
     proto(log: string)
     {
-        if (!this.canLog(this.PROTO)) return;
+        if (!this.canLog(XLog.PROTO)) return;
         console.log(this.getCurTime() + "[PROTO]\t" + log);
     }
 
     warn(log: string)
     {
-        if (!this.canLog(this.WARN)) return;
+        if (!this.canLog(XLog.WARN)) return;
         console.warn(this.getCurTime() + "[WARN]\t" + log);
     }
 
     error(log: string)
     {
-        if (!this.canLog(this.ERROR)) return;
+        if (!this.canLog(XLog.ERROR)) return;
         console.error(this.getCurTime() + "[ERROR]\t" + log);
     }
 

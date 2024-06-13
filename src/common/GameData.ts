@@ -15,4 +15,8 @@ export class GameData extends Singleton {
     getDataByKey(name: string): any {
         return this._G[name];
     }
+    getData()
+    {
+        return this._G;
+    }
 }
