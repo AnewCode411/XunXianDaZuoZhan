@@ -1,0 +1,12 @@
+{
+  "name": "XunXianDaZuoZhan",
+  "android": {
+    "targetArchitectures": {
+      "ARMv7": true,
+      "ARM64": false,
+      "x86": false,
+      "x86-64": false
+    },
+    "exportFormat": "APK"
+  }
+}
