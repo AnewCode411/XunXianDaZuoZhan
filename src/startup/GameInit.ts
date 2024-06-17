@@ -1,6 +1,7 @@
 const { regClass, property } = Laya;
 import { ScriptSingleton } from "./../common/singleton/ScriptSingleton"
 import { Game } from "./Game"
+import { GameConfig } from "./GameConfig";
 
 @regClass()
 export class GameInit extends ScriptSingleton<GameInit>() {
@@ -11,10 +12,13 @@ export class GameInit extends ScriptSingleton<GameInit>() {
     RunScene: boolean = false;
 
     // 
-    @property({type: "string"})
-    ApkType: string = "1";
+    @property({type: "number"})
+    ApkType: number = 1;
     @property({type: "string"})
     Lang: string = "zh";
+
+    @property({type: "any"})
+    Config: GameConfig = new GameConfig();
 
     onStart() {
         if (this.m_game == null) this.m_game = Game.getInstance();
