@@ -61,13 +61,13 @@ export class Print {
         }
     }
 
-    static printTable(param: any)
+    static printTable(param: any, ...param2: any[])
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.DEBUG))
         {
             var jsonString = JSON.stringify(param);
-            xlog.debug(jsonString);
+            xlog.debug(this.format(param2, jsonString));
         }
     }
 }

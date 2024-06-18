@@ -20,6 +20,7 @@ export class GameInit extends ScriptSingleton<GameInit>() {
     @property({type: "any"})
     Config: GameConfig = new GameConfig();
 
+
     onStart() {
         if (this.m_game == null) this.m_game = Game.getInstance();
         this.m_game.init();
