@@ -25,7 +25,13 @@ export class TestLoaderMod {
         })
         _cfgMod.getDataByKey("cfgName2", ()=>{
             Print.printTable(_cfgMod.getDataByKey("cfgName2"), 7);
-            Print.printTable(_cfgMod.m_cfg);
+            //Print.printTable(_cfgMod.m_cfg);
         })
+        _cfgMod.getDataByKey("cfgName", TestLoaderMod.loadDataxx)
+    }
+
+    static loadDataxx(data: any)
+    {
+        Print.printTable(data, "xxx");
     }
 }

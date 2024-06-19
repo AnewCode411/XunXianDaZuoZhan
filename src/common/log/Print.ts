@@ -10,9 +10,39 @@ export class Print {
         if (this._xlog == null) this._xlog = XLog.getInstance();
         return this._xlog;
     }
-    private static format(...param: any[]): string
+    
+    private static getFileNameAndLine(err: Error): string{
+        if (err == null) return "";
+        let stack = err.stack;
+        let stackArr = stack.split('\n');
+        let str = "";
+        if (stackArr.length > 2)
+        {
+            let path = stackArr[3];
+            if (path != null && path.length > 0)
+            {
+                //let val = path.match(".+/([^/]*)%.%w+$")
+                let vv = path.split(' ')
+                let len = 5;
+                if (vv.length >= len)
+                {
+                    let xx = vv[vv.length - 1].split(':');
+
+                    str = "["+vv[len] + " " +xx[xx.length - 1]+"] ";
+                }
+            }
+        }
+        return str;
+    }
+
+    private static format(bStack: boolean, ...param: any[]): string
     {
-        let str = param.join(" ");
+        let err = Error();
+        let str = this.getFileNameAndLine(err) + param.join(" ");
+        if (bStack)
+        {
+            str += err.stack;
+        }
         return str;
     }
     static init(level: number)
@@ -27,47 +57,43 @@ export class Print {
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.DEBUG))
-            xlog.debug(this.format(...param));
+            xlog.debug(this.format(false, ...param));
     }
     static printWarn(...param: any[])
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.WARN))
-            xlog.warn(this.format(...param));
+            xlog.warn(this.format(false, ...param));
     }
     static printError(...param: any[])
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.ERROR))
-            xlog.error(this.format(...param));
+            xlog.error(this.format(false, ...param));
     }
     static printTrace(...param: any[])
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.DEBUG))
         {
-            let error = new Error();
-            xlog.debug(this.format(...param) + "\n" + error.stack);
+            xlog.debug(this.format(true, ...param));
         }
     }
-
     static printTraceError(...param: any[])
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.ERROR))
         {
-            let error = new Error();
-            xlog.error(this.format(...param) + "\n" + error.stack);
+            xlog.error(this.format(true, ...param));
         }
     }
-
     static printTable(param: any, ...param2: any[])
     {
         let xlog = this.getXlog();
         if (xlog && xlog.canLog(XLog.DEBUG))
         {
             var jsonString = JSON.stringify(param);
-            xlog.debug(this.format(param2, jsonString));
+            xlog.debug(this.format(false, param2, jsonString));
         }
     }
 }
