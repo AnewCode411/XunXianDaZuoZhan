@@ -87,6 +87,7 @@ declare class Laya3D {
     static get enablePhysics(): any;
 }
 declare module Laya {
+    declare var _G: any;
     /**
      *  Config 用于配置一些全局参数。如需更改，请在初始化引擎之前设置。
      */

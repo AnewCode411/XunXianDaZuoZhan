@@ -1,6 +1,4 @@
-const { regClass, property } = Laya;
 
-@regClass()
 export class DateUtil {
     /*
     timestamp: 13位时间戳 | new Date() | Date()

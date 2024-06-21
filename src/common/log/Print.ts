@@ -1,3 +1,4 @@
+import { StringUtil } from "../util/StringUtil";
 import { XLog } from "./XLog";
 
 const { regClass, property } = Laya;
@@ -19,7 +20,7 @@ export class Print {
         if (stackArr.length > 2)
         {
             let path = stackArr[3];
-            if (path != null && path.length > 0)
+            if (!StringUtil.isNullOrEmpty(path))
             {
                 //let val = path.match(".+/([^/]*)%.%w+$")
                 let vv = path.split(' ')
@@ -27,8 +28,7 @@ export class Print {
                 if (vv.length >= len)
                 {
                     let xx = vv[vv.length - 1].split(':');
-
-                    str = "["+vv[len] + " " +xx[xx.length - 1]+"] ";
+                    str = StringUtil.formatString("[{0}:{1}] ", vv[len], xx[xx.length - 1]);
                 }
             }
         }
