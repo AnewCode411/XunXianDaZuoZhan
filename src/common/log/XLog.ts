@@ -1,6 +1,6 @@
 const { regClass, property } = Laya;
 import { ScriptSingleton } from "./../singleton/ScriptSingleton"
-import { DateUtil } from "../util/DateUtil";
+import { DateUtil } from "../utils/DateUtil";
 
 @regClass()
 export class XLog extends ScriptSingleton<XLog>() {

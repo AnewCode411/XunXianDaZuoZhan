@@ -7,10 +7,27 @@ import { LoaderMod } from "../common/loader/LoaderMod";
 import { CfgMod } from "../common/CfgMod";
 import { HotfixMod } from "../hotfix/HotfixMod";
 import { PlayerStoreMod } from "../common/store/PlayerStoreMod";
+import { GameMain } from "../core/GameMain";
 
 @regClass()
 export class Game extends Singleton {
+    private m_timer: Laya.Timer;
     init() {
+        this._init();
+    }
+
+    update() {
+        let delta = this.m_timer.delta;
+        this._update(delta);
+    }
+
+    lateUpdate() {
+        let delta = this.m_timer.delta;
+        this._lateUpdate(delta);
+    }
+
+    private _init() {
+        this.m_timer = Laya.timer;
         HotfixMod.init();   // 位置不改
         let _apk = ApkMod.getInstance();
         _apk.init();
@@ -22,13 +39,15 @@ export class Game extends Singleton {
         if (_apk.isDeug()) {
             DebugGM.init(); // 脚本屏蔽
         }
+
+        GameMain.init();
     }
 
-    update() {
-
+    private _update(deltaTime: number) {
+        GameMain.update(deltaTime);
     }
 
-    lateUpdate() {
-
+    private _lateUpdate(deltaTime: number) {
+        GameMain.lateUpdate(deltaTime);
     }
 }

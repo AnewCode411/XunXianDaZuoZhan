@@ -1,4 +1,4 @@
-import { StringUtil } from "../util/StringUtil";
+import { StringUtil } from "../utils/StringUtil";
 
 export class PlayerStoreMod {
     private static _playerStoreJson: any = null;

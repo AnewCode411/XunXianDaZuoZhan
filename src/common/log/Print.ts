@@ -1,4 +1,4 @@
-import { StringUtil } from "../util/StringUtil";
+import { StringUtil } from "../utils/StringUtil";
 import { XLog } from "./XLog";
 
 const { regClass, property } = Laya;
