@@ -10,7 +10,7 @@ export class CltGamePlayUpdateMod extends Singleton {
     private m_o15FpsLateUpdateEvent: GameUpdateListerner;
     private m_updateSecondEvent: GameUpdateListerner;
 
-    init() {
+    protected init() {
         this.m_oEveryFrameUpdateEvent = new GameUpdateListerner();
         this.m_o30FpsUpdateEvent = new GameUpdateListerner();
         this.m_o15FpsUpdateEvent = new GameUpdateListerner();
@@ -147,5 +147,9 @@ export class CltGamePlayUpdateMod extends Singleton {
 
     removeUpdateSecondEvent(modName: string) {
         this.m_updateSecondEvent.removeEvent(modName);
+    }
+
+    dispose(): void {
+        
     }
 }

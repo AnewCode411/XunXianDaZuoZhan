@@ -1,7 +1,7 @@
 import { Singleton } from "../../common/singleton/Singleton";
 
 export class InputMod extends Singleton {
-    init() {
+    protected init() {
 
     }
 
@@ -10,6 +10,10 @@ export class InputMod extends Singleton {
     }
 
     lateUpdate(deltaTime: number) {
+        
+    }
+
+    dispose(): void {
         
     }
 }

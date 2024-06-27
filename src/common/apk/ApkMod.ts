@@ -12,7 +12,7 @@ export class ApkMod extends Singleton {
     private m_isAndroidPlatform: boolean;
     private m_isIOSPlatform: boolean;
     private m_isOnMiniGame: boolean;        //  微信小游戏
-    init()
+    protected init()
     {
         let apkType = GameInit.getInstance().ApkType;
         this.m_isDebug = apkType < 2000
@@ -32,5 +32,7 @@ export class ApkMod extends Singleton {
     isPCPlatform(): boolean { return this.m_isPCPlatform }
     isAndroidPlatform(): boolean { return this.m_isAndroidPlatform }
     isIOSPlatform(): boolean { return this.m_isIOSPlatform }
-    
+    dispose(): void {
+        
+    }
 }

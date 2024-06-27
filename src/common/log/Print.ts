@@ -59,6 +59,18 @@ export class Print {
         if (xlog && xlog.canLog(XLog.DEBUG))
             xlog.debug(this.format(false, ...param));
     }
+    static printBeginTime(...param: any[])
+    {
+        let xlog = this.getXlog();
+        if (xlog && xlog.canLog(XLog.DEBUG))
+            console.time(this.format(false, ...param));
+    }
+    static printEndTime(...param: any[])
+    {
+        let xlog = this.getXlog();
+        if (xlog && xlog.canLog(XLog.DEBUG))
+            console.timeEnd(this.format(false, ...param));
+    }
     static printWarn(...param: any[])
     {
         let xlog = this.getXlog();

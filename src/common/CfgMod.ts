@@ -9,7 +9,7 @@ export class CfgMod extends Singleton {
     private m_loaderMod: LoaderMod = null;
     private m_cfgInfoCB: Array<Function> = null;
     private m_cfgOtherCB: any = null;
-    init()
+    protected init()
     {
         this.m_loaderMod = LoaderMod.getInstance();
         if (this.m_cfg == null)
@@ -90,4 +90,7 @@ export class CfgMod extends Singleton {
         return this.m_cfg[name];
     }
 
+    dispose(): void {
+        
+    }
 }

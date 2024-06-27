@@ -12,7 +12,7 @@ import { GameMain } from "../core/GameMain";
 @regClass()
 export class Game extends Singleton {
     private m_timer: Laya.Timer;
-    init() {
+    protected init() {
         this._init();
     }
 
@@ -49,5 +49,9 @@ export class Game extends Singleton {
 
     private _lateUpdate(deltaTime: number) {
         GameMain.lateUpdate(deltaTime);
+    }
+
+    dispose(): void {
+        
     }
 }

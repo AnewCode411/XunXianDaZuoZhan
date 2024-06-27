@@ -23,7 +23,7 @@ export class GameInit extends ScriptSingleton<GameInit>() {
 
     onStart() {
         if (this.m_game == null) this.m_game = Game.getInstance();
-        this.m_game.init();
+        // this.m_game.init();
     }
 
     onUpdate(): void {

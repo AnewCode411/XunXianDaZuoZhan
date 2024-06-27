@@ -16,7 +16,7 @@ export class LoaderMod extends Singleton {
 
     private m_loader: Laya.Loader;
     private m_defaultData: any = null;
-    init()
+    protected init()
     {
         this.m_loader = Laya.loader;
     }
@@ -36,4 +36,7 @@ export class LoaderMod extends Singleton {
     //     let _cfg = await this.m_loader.load({url: url, type: Laya.Loader.JSON, cache: false});
     //     return _cfg.data;
     // }
+    dispose(): void {
+        
+    }
 }

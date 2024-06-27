@@ -10,4 +10,12 @@ export class StringUtil {
     static isNullOrEmpty(str: string): boolean {
         return str === null || str.length == 0;
     }
+
+    static append(str: string, ...args: any[]): string {
+        if (args.length <= 0) { return str;}
+        for (let i = 0; i < args.length; i++) {
+            str += args[i];
+        }
+        return str;
+    }
 }

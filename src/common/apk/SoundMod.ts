@@ -3,8 +3,12 @@ import { Singleton } from "./../singleton/Singleton"
 
 @regClass()
 export class SoundMod extends Singleton {
-    init()
+    protected init()
     {
+        
+    }
+
+    dispose(): void {
         
     }
 }
